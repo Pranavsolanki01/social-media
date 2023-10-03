@@ -1,10 +1,13 @@
+import React from "react";
 const CustomButton =({title, containerStyles, iconRight, type, onClick})=>{
   return (
     <button
     onClick={onClick}
     type={type || "button"}
-    className={'inline-flex item-center text-base ${containerStyles}'}>
+    className={`inline-flex item-center text-base ${containerStyles}`}
+    >
         {title}
+
         {iconRight && <div className='ml-2'>{iconRight}</div> }
     </button>
   );

@@ -42,8 +42,13 @@ const upload = multer({ storage });
 const PORT = process.env.PORT || 8000;  /* port 6001 work as a backup port for the mongo if the 3001 is not working */
 
 mongoose.connect('process.env.MONGO_URL', {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
- }).then(() => {
-    app.listen(PORT, () => console.log('Server Port : ${PORT}'));
- }).catch((error) => console.log('${error} did not connect'));
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useFindAndModify: false,
+  useCreateIndex: true
+})
+.then(() => console.log('MongoDB connected...'))
+.catch(err => {
+  console.log('MongoDB connection error:', err);
+  process.exit(1);
+});
