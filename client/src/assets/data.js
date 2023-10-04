@@ -83,8 +83,8 @@ export const user = {
       "64df39704180b81adfe41d0b",
     ],
     verified: true,
-    createdAt: "2023-08-18T09:38:14.179Z",
-    updatedAt: "2023-08-21T06:46:18.258Z",
+    createdAt: "2023-10-01T09:38:14.179Z",
+    updatedAt: "2023-10-02T06:46:18.258Z",
     profileUrl:
       "https://res.cloudinary.com/djs3wu5bg/image/upload/v1683874454/samples/people/boy-snow-hoodie.jpg",
     token: "hZWFmZmU3NmMiLCJpYXQiOjE2OTIwMzY5",

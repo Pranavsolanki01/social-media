@@ -1,11 +1,12 @@
 import { Outlet, Navigate, Route, Routes, useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { Home,Profile, Register, Login, ResetPassword } from "./pages";
+import { compose } from '@reduxjs/toolkit';
 
 function Layout() {
-  const {user} = useSelector ((state) => state.user);
+  const { user } = useSelector ((state) => state.user);
   const location = useLocation();
-
+  // console.log(user);
 
   return user?.token ? (
     <Outlet />
@@ -35,6 +36,3 @@ function App() {
 
 export default App;
 
-
-
-// 21:28 tk ho chuka hai

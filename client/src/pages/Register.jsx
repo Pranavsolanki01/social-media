@@ -78,8 +78,8 @@ const Register = () => {
                       </div>
                       
                        <TextInput
-                       name="email" placeholder="email@exapmle.com"
-
+                       name="email" 
+                       placeholder="email@exapmle.com"
                        label="Email Address"
                        type="email"
                        register={
