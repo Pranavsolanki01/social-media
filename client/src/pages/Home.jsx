@@ -1,19 +1,21 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
-import { CustomButton, FriendsCard, ProfileCard, TextInput, TopBar } from "../components";
-import { suggest, requests } from "../assets/data";
+import { CustomButton, EditProfile, FriendsCard, Loading, PostCard, ProfileCard, TextInput, TopBar } from "../components";
+import { suggest, requests, posts} from "../assets/data";
 import { NoProfile } from "../assets";
 import { Link } from "react-router-dom";
-import { BsPersonFillAdd } from "react-icons/bs";
+import { BsFiletypeGif, BsPersonFillAdd } from "react-icons/bs";
 import { useForm } from "react-hook-form";
-import { BiImages } from "react-icons/bi";
+import { BiImages, BiSolidVideo } from "react-icons/bi";
 
 const Home = () => {
-  const {user} = useSelector(state=> state.user);
+  const {user, edit} = useSelector(state=> state.user);
   const [ friendRequest, setFriendRequest] = useState(requests);
   const [suggestedFriends, setSuggestedFriends] = useState(suggest);
   const [errMsg, setErrMsg] = useState("");
   const [file, setFile] = useState(null);
+  const[posting,setPosting] = useState (false);
+  const[loading,setLoading] = useState (false);
   const {
     register, 
     handleSubmit, 
@@ -22,6 +24,7 @@ const Home = () => {
 
 const handlePostSubmit = async(data) => {}
   return (
+  <>
   <div className='home w-full px-0 lg:px-10 pb-20 2xl:px-30 bg-bgColor lg:rounded-lg h-screen overflow-hidden'>
     <TopBar/>
   
@@ -37,13 +40,13 @@ const handlePostSubmit = async(data) => {}
 
 {/* CENTER */}
 
-      <div className='flex-1 h-full bg-primary px-4 flex flex-col gap-6 overflow-y-auto rounded-lg'>
+      <div className='flex-1 h-full px-4 flex flex-col gap-6 overflow-y-auto rounded-lg'>
         
         <form 
             onSubmit={handleSubmit(handleSubmit)}
             className='bg-primary px-4 rounded-lg'>
             <div className='w-full flex items-center gap-2 py-4 border-b border-[#66666645]'>
-              <img 
+            <img 
                 src={user?.profileUrl ?? NoProfile}
                 alt='User Image' 
                 className='w-14 h-14 rounded-full object-cover'
@@ -83,8 +86,74 @@ const handlePostSubmit = async(data) => {}
                   <BiImages/>
                   <span>Image</span>
                </label>
+
+                <label 
+                  htmlFor='videoUpload'
+                  className='flex items-center gap-1 text-base text-ascent-2 hover:text-ascent-1 cursor-pointer'>
+
+                    <input 
+                      type='file'
+                      data-max-size='5120'
+                      onChange={(e) => setFile(e.target.files[0])}
+                      className='hidden'
+                      id='videoUpload'
+                      accept='.mp4, .wav'
+                      />
+                      <BiSolidVideo/>
+                      <span> Video</span>
+                </label>
+
+                <label 
+                  htmlFor='vgifUpload'
+                  className='flex items-center gap-1 text-base text-ascent-2 hover:text-ascent-1 cursor-pointer'>
+
+                    <input 
+                      type='file'
+                      data-max-size='5120'
+                      onChange={(e) => setFile(e.target.files[0])}
+                      className='hidden'
+                      id='vgifUpload'
+                      accept='.gif'
+                      />
+                      <BsFiletypeGif/>
+                      <span>GIF</span>
+                </label>
+
+
+{/* adding the  post button */}
+
+
+              <div>
+                  {posting ? (
+                    <Loading/>
+                  ) : (
+                  <CustomButton
+                      type='submit'
+                      title='Post'
+                      containerStyles='bg-[#0444a4] text-white py-1 px-6 rounded-full font-semibold text-sm'
+                      /> 
+                  )}
+              </div>
             </div>
         </form>
+
+        {loading ? (<Loading/>) : posts?.length > 0 ? (
+          posts?.map((post) => (
+            <PostCard key={post?._id} post={post}
+            
+            user={user}
+            deletePost={() => {}}
+            likePost ={() => {}}
+            />
+          ))
+        ) : (
+          <div className='flex w-full h-full items-center justify-center'>
+            <p className='text-lg text-ascent-2'>
+              No Post Available
+            </p>
+          </div>
+
+        )}
 
       </div>
 
@@ -188,7 +257,15 @@ const handlePostSubmit = async(data) => {}
   
     </div>
   </div>
+
+
+
+  {edit && <EditProfile/>}
+
+  </>
   );
 };
 
 export default Home;
+
+

@@ -157,11 +157,11 @@ export const user = {
       },
       description: "Hello everyone, this is a new video. check it out. thank you",
       image:
-        "https://res.cloudinary.com/djs3wu5bg/image/upload/v1692597858/SOCIALMEDIA/hdahstpztt1fvobc13st.png",
+        "https://res.cloudinary.com/dqphem47b/image/upload/v1696771550/samples/people/bicycle.jpg",
       likes: ["64df3c064180b81adfe41d4b"],
       comments: [],
-      createdAt: "2023-08-21T06:04:18.297Z",
-      updatedAt: "2023-08-21T06:04:18.297Z",
+      createdAt: "2023-10-01T06:04:18.297Z",
+      updatedAt: "2023-10-01T06:04:18.297Z",
       __v: 0,
     },
     {
@@ -176,7 +176,9 @@ export const user = {
       },
       description:
         "What is Lorem Ipsum? Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. Why do we use it? It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, ",
-      likes: ["64df39704180b81adfe41d0b"],
+      image: 
+      "https://res.cloudinary.com/dqphem47b/image/upload/v1696771576/cld-sample-2.jpg",
+        likes: ["64df39704180b81adfe41d0b"],
       comments: [],
       createdAt: "2023-08-20T08:24:54.330Z",
       updatedAt: "2023-08-21T03:23:24.809Z",

@@ -19,6 +19,9 @@ const userSlice = createSlice({
             state.user = {};
             localStorage.removeItem("user");
         },
+        updateProfile(state, action){
+            state.edit = action.payload;
+        },
     },
 });
 
